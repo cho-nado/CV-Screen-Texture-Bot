@@ -43,6 +43,17 @@ Make sure you have Python installed and you’ve downloaded this repository loca
 
 Include any screenshots or brief examples of the bot’s predictions here.
 
+![IMG_8620](https://github.com/user-attachments/assets/fd4fb4a7-7433-4f5b-8a31-9f5bb3edf90f)
+
+![IMG_8623](https://github.com/user-attachments/assets/49ac953b-1f22-41df-914d-f14386a27c4a)
+
+![IMG_8625](https://github.com/user-attachments/assets/426bc550-c5f9-477d-9059-3a8ab7f2b673)
+
+![IMG_8628](https://github.com/user-attachments/assets/19b3447b-5295-40bf-85b5-2ab8e500c43b)
+
+![IMG_8630](https://github.com/user-attachments/assets/e25d5168-e266-41f3-bba8-aa5513d2fb77)
+
+
 ## Live Demo
 
 A live version of this bot is currently running on my VPS server. You can try it out by messaging [@screen_texture_bot](https://t.me/screen_texture_bot) in Telegram.
