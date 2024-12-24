@@ -1,0 +1,6 @@
+torch          # Used for working with models and neural networks
+torchvision   # For models and image transformations
+Pillow          # For working with images (PIL)
+python-telegram-bot  # For working with the Telegram API
+nest-asyncio   # For handling asynchronous operations
+numpy
