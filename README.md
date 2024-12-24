@@ -55,4 +55,66 @@ Contains the model code. You can run it in Google Colab, Jupyter Lab, or other e
 
 * model_training.ipynb/py:
 Shows how the model was trained from scratch or fine-tuned. You can train it yourself locally or in Google Colab (runs for 5 epochs by default).
+
+
+# Algorithm Description
+
+**1. Imports and Setup**
+
+**Import necessary libraries:**
+
+* **Torch & Torchvision** for model loading, preprocessing, and inference.
+* **PIL** for image handling.
+* **python-telegram-bot** library for creating and managing Telegram bot commands and messages.
+* **nest_asyncio** to allow asynchronous code (if running in environments like Jupyter).
+
+**2. Global Variables**
+
+**device** is determined (CPU or GPU) for running model inference.
+**classes** is a list of all texture classes recognized by this model (47 in total).
+**num_classes** is set to the number of classes in **classes**.
+
+**3. Model Loading**
+
+* A pre-trained ResNet50 model is retrieved from **torchvision.models** with **pretrained=True**.
+* The final classification layer (model.fc) is replaced with a new linear layer for 47 classes.
+* The script attempts to load the trained weights from **resnet50_dtd_split1.pth**. If the file is found, it loads them into the model; otherwise, it proceeds without loading those weights.
+* The model is moved to the appropriate device (CPU or GPU) and set to evaluation mode.
+
+**4. Image Preprocessing**
+
+A transforms pipeline is defined:
+* **Resize** the image to 224×224 pixels.
+* **Convert** it to a PyTorch tensor.
+* **Normalize** it with the standard ImageNet mean and std.
+
+**5. Telegram Bot Handlers**
+
+a. start_command Handler
+* Responds to the /start command.
+* Greets the user and provides an inline button labeled “screen”.
+
+b. button_callback Handler
+* Listens for clicks on the inline buttons.
+* If the user taps “screen”, it sends instructions to upload a photo.
+
+c. photo_handler Handler
+* Triggered when the user sends a photo.
+* Takes the largest version of the photo ([-1] from the list).
+* Downloads the photo locally (temp_image.jpg).
+* Loads it with PIL, runs it through the preprocessing pipeline, and performs inference with the loaded ResNet50 model.
+* Uses softmax to get probabilities, picks the top class via argmax, and calculates the confidence.
+* Sends back a message with the predicted class and confidence score.
+* Offers the “screen” button again so the user can classify another image.
+
+**6. Main Bot Launch**
+* Checks if __name__ == "__main__", meaning the script is being run directly (not imported).
+* Retrieves or sets TELEGRAM_TOKEN.
+* Builds the application (ApplicationBuilder().token(TELEGRAM_TOKEN).build()).
+* Registers all the handlers for commands, callbacks, and photos:
+    * /start -> start_command
+    * Inline button -> button_callback
+    * Photo messages -> photo_handler
+* Finally, calls application.run_polling() to start long polling, so the bot remains active, listening for user messages and events.
+
    
