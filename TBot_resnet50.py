@@ -167,8 +167,15 @@ async def photo_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # MAIN (bot launch)
 # ---------------------
 if __name__ == "__main__":
-    # Connect to Telegram
-    TELEGRAM_TOKEN = "YOUR_TELEGRAM_TOKEN"
+    # # Connect to Telegram
+    # TELEGRAM_TOKEN = "YOUR_TOKEN"
+
+    # Get Telegram token from environment variable
+    TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN_TEXTURE")
+
+    if TELEGRAM_TOKEN is None:
+        raise ValueError("TELEGRAM_TOKEN_TEXTURE is not set. Please provide it as an environment variable.")
+
     application = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
 
     # Register handlers
