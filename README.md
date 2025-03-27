@@ -31,6 +31,10 @@ This repository contains a Telegram bot (TBot_resnet50.py) that identifies textu
 
 Make sure you have Python installed and you’ve downloaded this repository locally. Also, if you already have obsolete numpy and other old libraries on your computer, it can cause to some conflicts with other libraries from requirements. So, it can require to reinstall some of them in order to get the last vertion for every lib.
 
+**5. Runing with Docker:**
+
+In [this article](https://medium.com/@ilartstu/deploy-your-python-project-with-docker-a-step-by-step-guide-telegram-bot-example-7e925d4f5dde) i described how to launch this bot thanks to Docker and simplify your life this way! 
+
 ## Using the Bot
 
 1. Open your Telegram app and navigate to your bot’s chat.
